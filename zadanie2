@@ -1,0 +1,50 @@
+class Phone
+{
+    private string brand;
+    private int batteryLevel;
+    public string Brand
+    {
+        get { return brand; }
+        set { brand = value; }
+    }
+    public int BatteryLevel
+    {
+        get { return batteryLevel; }
+        set
+        {
+            if (value >= 0 && value <= 100)
+            {
+                batteryLevel = value;
+            }
+            else
+            {
+                Console.WriteLine("Заряд должен быть от 0 до 100!");
+            }
+        }
+    }
+    public Phone(string brand, int batteryLevel)
+    {
+        Brand = brand;
+        BatteryLevel = batteryLevel;
+    }
+    public void UsePhone()
+    {
+        batteryLevel -= 10;
+        if (batteryLevel < 0)
+        {
+            batteryLevel = 0;
+            Console.WriteLine($"Телефон {brand}, заряд: {batteryLevel}");
+        }
+        else 
+        { 
+            Console.WriteLine($"Телефон {brand}, заряд: {batteryLevel}"); 
+        }
+    }
+}
+static void Main(string[] args)
+{
+    Phone myphone = new Phone("Samsung", 70);
+    myphone.UsePhone();
+    myphone.UsePhone();
+    Console.ReadKey();
+}
