@@ -1,0 +1,47 @@
+class BankAccount
+{
+    private string owner;
+    private double balance;
+    public string Owner
+    {
+        get { return owner; }
+        set { owner = value; }
+    }
+    public double Balance
+    {
+        get { return balance; }
+        set
+        {
+            if (value > 0)
+            {
+                balance = value;
+            }
+            else 
+            { 
+                Console.WriteLine("Недостаточно средств!"); 
+            }
+        }
+    }
+    public BankAccount(string owner, double balance)
+    {
+        Owner = owner;
+        Balance = balance;
+    }
+    public void Depozit()
+    {
+        balance += 500;
+        Console.WriteLine($"{owner}, баланс: {balance}");
+    }
+    public void Withdraw()
+    {
+        balance -= 500;
+        Console.WriteLine($"{owner}, баланс: {balance}");
+    }
+} 
+static void Main(string[] args)
+{
+    BankAccount mybankaccount = new BankAccount("Иван", 1000);
+    mybankaccount.Depozit();
+    mybankaccount.Withdraw();
+    Console.ReadKey();
+}
